@@ -1,0 +1,24 @@
+Projekt s paralelizací
+Požadavky na absolvování
+Vaším úkolem je vytvořit nebo upravit aplikaci, co řeší skutečný problém s paralelními nebo souběžnými procesy či vlákny. Sami najděte situaci v reálném světě, například ve Vašich dřívějších projektech, kde by mohlo probíhat více práce současně. Většina dějů v realitě má paralelní nebo alespoň souběžný charakter, tedy není problém takovou věc najít. Váš software ale musí být reálně použitelný, nesmí to být jen ukázka nebo "hra s vlákny" nebo nějaká ukázková "demonstrace" či "simulace". Může to být jen část nějakého softwarového řešení, ale musí být užitečná.
+
+Bude důležité, jak jste řešili:
+
+rozdělení problému nebo práce na paralelní části?
+
+komunikaci nebo koordinaci mezi procesy či vlákny? 
+
+synchronizaci a konflikty o zdroje?
+
+Pokud vyberete problém nebo práci, kde není rozdělení na paralelní, či souběžné časti vhodné, nebo kde tyto části mezi sebou nekomunikují, nesdílí a nemají konflikty o zdroje, tak je Váš program příliš triviální - není dostatečný. Bude pak bohužel hodnocen známkou 5 - nedostatečný.
+
+Za výborné projekty naopak budeme považovat ty, které naráží na dobře známé problémy jako je producent-konzumer, nebo řešení, které mají ošetřený vznik deadlock, či starvation situací, nebo dokonce odpovídají schématům problému jako jsou sleeping barber, cigarette smokers, či dining philosophers, ale nejsou jen triviální simulací.
+
+Inspirace 
+Níže uvádíme typické situace, které lze takto naprogramovat. Ty samozřejmě nesmíte odevzdat, protože smyslem úlohy je, abyste vytvořili vlastní nápad, ne opsali problém ze zadání:
+
+fronta objednávek ve skladu, kde jeden proces přijímá objednávky od zákazníků, druhý je připravuje a balí, třetí expeduje, vše souběžně, ale koordinovaně a synchronizovaně. Jinak řečeno, když  přijde nová objednávka, jeden proces ji uloží do fronty. Druhý proces průběžně kontroluje frontu a připravuje objednávky k balení. Třetí proces balí a expeduje připravené zásilky. Všechny procesy probíhají současně, koordinace zajišťuje, že žádná objednávka nezůstane pozadu a že procesy se navzájem nezablokují.
+
+řízení automobilového provozu na křižovatce, kde semafory a auta představují procesy, které musí být synchronizovány, aby nedošlo k totálnímu zablokování do kruhu.
+
+Cílem je, aby program řešil reálnou souběžnou úlohu, byl použitelný v praxi a ukázal, že rozumíte rozdělení práce, koordinaci a synchronizaci mezi paralelními částmi.
