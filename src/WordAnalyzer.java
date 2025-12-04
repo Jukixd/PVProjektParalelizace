@@ -14,19 +14,13 @@ public class WordAnalyzer implements Runnable {
 
     @Override
     public void run() {
-        String threadName = Thread.currentThread().getName();
-        System.out.println("Worker " + threadName + " spuštěn.");
-
         try {
-            while  (true) {
+            while (true) {
                 String line = queue.take();
                 if (line.equals(poisonPill)) {
-
                     queue.put(poisonPill);
                     break;
                 }
-
-
                 String[] words = line.toLowerCase().split("[\\p{Punct}\\s]+");
                 for (String word : words) {
                     if (!word.isEmpty()) {
@@ -37,6 +31,5 @@ public class WordAnalyzer implements Runnable {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-        System.out.println("Worker " + threadName + " ukončen.");
     }
 }
