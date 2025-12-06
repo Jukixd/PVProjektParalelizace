@@ -5,7 +5,6 @@ import java.nio.file.Path;
 import java.util.concurrent.*;
 
 public class WordCounterFrame extends JFrame {
-
     private final JTextArea resultsArea = new JTextArea(15, 40);
     private final JLabel statusLabel = new JLabel("Stav: Připraveno");
     private File selectedFile;
