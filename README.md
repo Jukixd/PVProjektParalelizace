@@ -1,38 +1,29 @@
-1. POPIS PROJEKTU A CÍL
+## 1. POPIS PROJEKTU A CÍL
 
-Tento program je určen k analíze počtu slov
+Tato aplikace řeší reálný problém zpracování velkých textových 
+dat pomocí paralelního programování. Umožňuje uživateli vybrat 
+textový soubor a efektivně spočítat výskyt jednotlivých slov s 
+využitím více vláken současně
 
 Cílem je:
-      1. Zpracovat velké soubory rychleji díky paralelismu.
-      2. Spočítat frekvenci výskytu každého slova v souboru.
+* Zpracovat velké soubory rychleji díky paralelismu.
+* Spočítat frekvenci výskytu každého slova v souboru.
 
-
-2. ARCHITEKTURA A SOUBĚŽNOST
+## 2. ARCHITEKTURA
 
    Projekt je rozdělen do rolí pro řešení problémů souběžnosti:
 
-   A) TŘÍDA WORDCOUNTSERVICE:
-      Řídí celý proces, inicializuje zdroje a vlákna. Obsahuje hlavní logiku.
-
-   B) TŘÍDA FILEREADERTASK:
-      Čte řádky ze souboru a vkládá je do fronty.
-
-   C) TŘÍDA WORDANALYZERWORKER:
-      Pool 4 vláken (Workerů) odebírá řádky z fronty, zpracovává je a aktualizuje výsledky.
-
-   D) TŘÍDA INPUTVALIDATOR:
-      Stará se o získání a validaci platné cesty k souboru z konzole.
-
-3. POUŽITÍ A SPUŠTĚÍ
+* Main.java - Vstupní bod aplikace.
+* WordCounterFrame.java - Uživatelské rozhraní (Swing).
+* AnalysisWorker.java - SwingWorker pro spouštění úlohy na pozadí.
+* FileReaderTask.java - Vlákno producenta (čtení souboru).
+* WordAnalyzer.java - Vlákno konzumenta (zpracování textu).
+## 3. POUŽITÍ A SPUŠTĚÍ
 
 Před spuštěním zkompilujte všechny .java soubory:
- javac *.java
+javac *.java
 
 Spuštění programu:
- java MainApp
+ java Main.java
 
-Interakce:
-   Program vás vyzve k zadání cesty k souboru. Program se neukončí při chybné cestě, ale bude vyžadovat opakované zadání (díky třídě InputValidator).
 
-Příklad vstupu:
-   C:\cesta\k\vasemu\souboru.txt

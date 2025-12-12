@@ -1,8 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
-import java.nio.file.Path;
-import java.util.concurrent.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 
 public class WordCounterFrame extends JFrame {
     private final JTextArea resultsArea = new JTextArea(15, 40);
@@ -11,7 +11,7 @@ public class WordCounterFrame extends JFrame {
     private JButton startButton;
 
     private static final int NUM_WORKERS = 4;
-    private static final String POISON_PILL = "END_OF_FILE_SIGNAL";
+    private static final String POISON_PILL = "end";
 
     public WordCounterFrame() {
         super("Paralelní Počítadlo Slov");
@@ -50,6 +50,8 @@ public class WordCounterFrame extends JFrame {
     private void selectFile() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new File("."));
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Textové soubory (*.txt)", "txt");
+        fileChooser.setFileFilter(filter);
         int result = fileChooser.showOpenDialog(this);
 
         if (result == JFileChooser.APPROVE_OPTION) {
@@ -61,7 +63,7 @@ public class WordCounterFrame extends JFrame {
 
     private void startAnalysis() {
         if (selectedFile == null) {
-            JOptionPane.showMessageDialog(this, "Prosím, nejprve vyberte soubor.", "Chyba", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Prosim nejprve vyberte soubor", "Chyba", JOptionPane.WARNING_MESSAGE);
             return;
         }
         startButton.setEnabled(false);

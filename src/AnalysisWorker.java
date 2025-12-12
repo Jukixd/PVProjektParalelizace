@@ -52,7 +52,7 @@ class AnalysisWorker extends SwingWorker<Map<String, Long>, Void> {
                     .collect(Collectors.joining("\n"));
 
             resultsArea.setText(results);
-            statusLabel.setText("Stav: Dokončeno. Celkem unikátních slov: " + finalResults.size());
+            statusLabel.setText("Stav: Dokončenoq -- Celkem unikátních slov: " + finalResults.size());
 
         } catch (InterruptedException | ExecutionException e) {
             statusLabel.setText("Stav: Chyba při zpracování: " + e.getMessage());
